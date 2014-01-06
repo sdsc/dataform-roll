@@ -95,8 +95,8 @@ else ifneq ("$(ROLLOPTS)", "$(subst avx,,$(ROLLOPTS))")
 endif
 
 build: $(SRC_DIRS)
-	cp patch-files/configure $(SOURCE_DIR)
-	cp patch-files/ncvalues.cpp $(SOURCE_DIR)/cxx
+	patch $(SOURCE_DIR)/configure patch-files/configure.patch
+	patch $(SOURCE_DIR)/cxx/ncvalues.cpp patch-files/ncvalues.cpp.patch
 	( \
 	  $(COMPILERSETUP); \
 	  export CC=$(CCOMP); \
@@ -108,7 +108,6 @@ build: $(SRC_DIRS)
 	  export FFLAGS="$(COMPILE_FLAGS)"; \
 	  cd $(SOURCE_DIR); \
           export LD_LIBRARY_PATH=/opt/gnu/gmp/4.3.2/lib:$${LD_LIBRARY_PATH}; \
-          export LD_PRELOAD=$(REDHAT.ROOT)/src/gmpn_srq_n.so; \
 	  ./configure --prefix=$(PKGROOT) --with-pic; \
 	  $(MAKE); \
 	)

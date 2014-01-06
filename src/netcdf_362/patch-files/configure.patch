@@ -1,0 +1,11 @@
+--- netcdf-3.6.2/configure	2007-03-01 14:46:13.000000000 -0800
++++ patch-files/configure	2014-01-06 09:58:09.000000000 -0800
+@@ -14796,7 +14796,7 @@
+           pgCC*)
+             # Portland Group C++ compiler
+  	    case `$CC -V` in
+- 	    *pgCC\ [1-5]*)
++ 	    *pgCC\ [1-5].*)
+  	      prelink_cmds_CXX='tpldir=Template.dir~
+  		rm -rf $tpldir~
+  		$CC --prelink_objects --instantiation_dir $tpldir $objs $libobjs $compile_deplibs~

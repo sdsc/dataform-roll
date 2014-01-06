@@ -135,7 +135,7 @@ build: $(SRC_DIRS)
 	  export FC=$(F90COMP); \
 	  export FFLAGS="$(COMPILE_FLAGS) -I$${NETCDF_HOME}/include"; \
 	  export FCLAGS="$(COMPILE_FLAGS) -I$${NETCDF_HOME}/include"; \
-      cp patch-files/module_netcdf_nc_data.F90 $(SOURCE_DIR)/fortran; \
+	  patch $(SOURCE_DIR)/fortran/module_netcdf_nc_data.F90  patch-files/module_netcdf_nc_data.F90.patch; \
 	  cd $(SOURCE_DIR); \
 	  ./configure --prefix=$(PKGROOT) --with-pic --disable-f03; \
 	  touch man4/version-f90.texi; \
